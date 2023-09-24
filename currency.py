@@ -43,6 +43,6 @@ def format_output(date: str, from_currency: str, to_currency: str, rate: float, 
     """
     converted_amount = round(amount * rate, 2)
     inverse_rate = reverse_rate(rate)
-    return (f"The conversion rate on {date} from {from_currency} to {to_currency} was {round_rate(rate)}. \n"
-            f"So {amount} in {from_currency} correspond to {converted_amount} in {to_currency}. "
-            f"The inverse rate was {inverse_rate}.")
+    return (f"The conversion rate on {date} from {from_currency} to {to_currency} was {round_rate(rate):.4f}. \n"
+            f"So {amount:.2f} in {from_currency} correspond to {converted_amount:.2f} in {to_currency}. "
+            f"The inverse rate was {inverse_rate:.4f}.")

@@ -20,9 +20,9 @@ def get_currencies_list() -> list:
     else:
         return None
 
-def get_latest_rates(from_currency: str, to_currency: str, amount: float) -> (str, float):
+def get_latest_rates(from_currency: str, to_currency: str) -> (str, float):
     """
-    Fetch the latest exchange rate for the given currency pair and amount from the Frankfurter API.
+    Fetch the latest exchange rate for the given currency pair from the Frankfurter API.
     
     Parameters:
     -----------
@@ -30,20 +30,18 @@ def get_latest_rates(from_currency: str, to_currency: str, amount: float) -> (st
         The source currency code.
     to_currency : str
         The target currency code.
-    amount : float
-        The amount in source currency to be converted.
         
     Returns:
     --------
     tuple:
-        A tuple containing the date of the rate and the converted amount in target currency. 
+        A tuple containing the date of the rate and the conversion rate. 
         Returns (None, None) if there's an error in fetching.
     """
     # Check if the source and target currencies are the same
     if from_currency == to_currency:
         return datetime.date.today().strftime('%Y-%m-%d'), 1.0
 
-    url = f"{BASE_URL}/latest?from={from_currency}&to={to_currency}&amount={amount}"
+    url = f"{BASE_URL}/latest?from={from_currency}&to={to_currency}"
     status, response = get_url(url)
     if status == 200:
         data = json.loads(response)
@@ -51,9 +49,9 @@ def get_latest_rates(from_currency: str, to_currency: str, amount: float) -> (st
     else:
         return None, None
 
-def get_historical_rate(from_currency: str, to_currency: str, from_date: str, amount: float) -> float:
+def get_historical_rate(from_currency: str, to_currency: str, from_date: str) -> float:
     """
-    Fetch the historical exchange rate for the given currency pair, date, and amount from the Frankfurter API.
+    Fetch the historical exchange rate for the given currency pair and date from the Frankfurter API.
     
     Parameters:
     -----------
@@ -63,19 +61,17 @@ def get_historical_rate(from_currency: str, to_currency: str, from_date: str, am
         The target currency code.
     from_date : str
         The date for which the historical rate is required.
-    amount : float
-        The amount in source currency to be converted.
         
     Returns:
     --------
     float:
-        The converted amount in target currency. Returns None if there's an error in fetching.
+        The conversion rate for the given date. Returns None if there's an error in fetching.
     """
     # Check if the source and target currencies are the same
     if from_currency == to_currency:
         return 1.0
 
-    url = f"{BASE_URL}/{from_date}?from={from_currency}&to={to_currency}&amount={amount}"
+    url = f"{BASE_URL}/{from_date}?from={from_currency}&to={to_currency}"
     status, response = get_url(url)
     if status == 200:
         data = json.loads(response)

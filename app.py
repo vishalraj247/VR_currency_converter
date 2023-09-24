@@ -22,7 +22,7 @@ else:
 
     # Fetch and display the latest exchange rate upon button press
     if st.button("Get Latest Rate"):
-        date, rate = get_latest_rates(from_currency, to_currency, amount)
+        date, rate = get_latest_rates(from_currency, to_currency)
 
         # Display an info message if the fetched exchange rate isn't from the current day
         if date and rate and datetime.datetime.strptime(date, '%Y-%m-%d').date() < datetime.date.today():
@@ -47,11 +47,11 @@ display_date = selected_date
 if selected_date.weekday() in [5, 6] and get_previous_saturday(today) == get_previous_saturday(selected_date):
     st.info("Note: Exchange rates are typically not updated on weekends. Displaying data from the latest working day (usually Friday).")
     
-    # Adjust the display date based on whether Saturday or Sunday was selected
-    display_date = selected_date - datetime.timedelta(days=(7 - selected_date.weekday()))
+    # Adjust the display date to point to the previous Friday
+    display_date = selected_date - datetime.timedelta(days=selected_date.weekday() - 4)
 
 # Fetch and display historical exchange rate for the selected date upon button press
 if st.button("Get Historical Rate"):
-    rate = get_historical_rate(from_currency, to_currency, selected_date.strftime('%Y-%m-%d'), amount)
+    rate = get_historical_rate(from_currency, to_currency, selected_date.strftime('%Y-%m-%d'))
     if rate:
         st.text(format_output(display_date.strftime('%Y-%m-%d'), from_currency, to_currency, rate, amount))
