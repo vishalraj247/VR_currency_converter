@@ -51,7 +51,7 @@ class TestAppFunctions(unittest.TestCase):
         mock_get.return_value = (200, mock_response)
         date, rate = get_latest_rates("EUR", "USD")
         self.assertEqual(date, "2023-09-22")
-        self.assertEqual(rate, 106.47)
+        self.assertEqual(rate, 1.0647)
 
     @patch("api.get_url")
     def test_get_historical_rate(self, mock_get):
@@ -64,7 +64,7 @@ class TestAppFunctions(unittest.TestCase):
         """
         mock_get.return_value = (200, mock_response)
         rate = get_historical_rate("EUR", "USD", "2023-09-22")
-        self.assertEqual(rate, 106.47)
+        self.assertEqual(rate, 1.0647)
 
 if __name__ == '__main__':
     unittest.main()
