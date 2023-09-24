@@ -1,6 +1,6 @@
 # Currency Converter Web App
 
-Author: Vishal Raj
+Author: Vishal Raj<br />
 Student ID: 14227627
 
 ## Project Description
