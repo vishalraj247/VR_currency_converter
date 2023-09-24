@@ -6,6 +6,16 @@ Student ID: 14227627
 ## Project Description
 This project is a Streamlit web application designed to fetch real-time and historical currency conversion rates from the Frankfurter API. Users can select two currencies, input an amount, and receive the current conversion rate, the converted amount, and the inverse conversion rate. Additionally, users have the capability to specify a historical date to fetch the conversion rate for that day.
 
+### Challenges Faced:
+* API Limitations: The Frankfurter API, while robust and reliable, has its own rate limits and constraints. Ensuring our application does not exceed these rate limits required implementing error checks and handling.
+* Environment Setup: Getting Streamlit to run consistently across different operating systems and Python versions presented a few hitches. Especially when dealing with different Python installations on MacOS.
+* Date Handling: As the API provides historical data up until September 2013, verifying the correctness of fetched historical rates and handling non-business days added an extra layer of complexity.
+
+### Future Implementations:
+* Graphical Representation: In the future, we aim to integrate graphical representations to show the fluctuation of currency rates over a span of time. This would give users a more visual understanding of the currency trends.
+* Notification Feature: We are looking to implement a notification system where users can set a threshold for a specific currency. Once the currency rate crosses that threshold, the user will be notified, aiding in investment and currency exchange decisions.
+* User Profiles and History: To enhance user experience, we are planning to introduce user profiles. This feature will allow users to save their preferences, frequently used currency pairs, and maintain a history of their past conversions.
+
 ## Python Functions Overview:
 1.	In api.py:
 *   get_url(url: str) -> (int, str): Connects to an API endpoint and retrieves response data.
@@ -22,7 +32,7 @@ This project is a Streamlit web application designed to fetch real-time and hist
 1.	Setup Python Environment:
 *	If you don't have Python installed, you can install it using Homebrew. If you don't have Homebrew, install it first with:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-*	Then, install Python using:
+*	Then, install Python using(Note: I used Python 3.11.5):
 brew install python
 2.	Clone/Download Project:
 *	If you have git installed, you can clone the repository using:
@@ -32,7 +42,7 @@ git clone https://github.com/vishalraj247/VR_currency_converter.git
 *	Open the terminal.
 *	Change directory to where the project files are located using:
 cd path_to_directory
-4.	Install and Run Streamlit:
+4.	Install and Run Streamlit(Note: I used Streamlit 1.27.0):
 a. Standard Installation:
 *	Install Streamlit using:
 python3 -m pip install streamlit
@@ -59,3 +69,21 @@ deactivate
 *	Select the "from" and "to" currencies from the dropdown menus.
 *	Click "Get Latest Rate" to see the current conversion rate and converted amount.
 *	Alternatively, select a date and click "Get Historical Rate" to fetch conversion rates for that specific date.
+
+## Project Structure:
+
+Below is the structure and brief description of each folder and file in the project:
+
+* app.py:
+This is the main Streamlit application script. It manages user inputs, interacts with the backend functions, and displays the results to the user.
+* api.py:
+Contains functions related to direct API interactions. It has the primary function to make GET requests to the specified API endpoint and handle the response.
+* frankfurter.py:
+Dedicated to the Frankfurter API endpoints. It contains functions to fetch the list of available currencies, get the latest exchange rates, and retrieve historical exchange rates.
+* currency.py:
+Houses utility functions for the currency conversion process. It includes functions for rounding rates, calculating the inverse rate, and formatting the output for display.
+* README.md:
+A markdown file that provides an overview of the project, instructions on how to run the application, and additional documentation about challenges, future enhancements, and project structure.
+
+## Citations
+* Documentation. Frankfurter Exchange rates and currency data API. (n.d.). https://www.frankfurter.app/docs/
