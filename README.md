@@ -8,9 +8,9 @@ This project is a Streamlit web application designed to fetch real-time and hist
 
 ### Challenges Faced:
 * API Limitations: The Frankfurter API, while robust and reliable, has its own rate limits and constraints. Ensuring our application does not exceed these rate limits required implementing error checks and handling.
-* Environment Setup: Getting Streamlit to run consistently across different operating systems and Python versions presented a few hitches. Especially when dealing with different Python installations on MacOS. Also added a feature where if any date is selected from future it won't show any conversion information and will provide a warning.
+* Environment Setup: Getting Streamlit to run consistently across different operating systems and Python versions presented a few hitches. Especially when dealing with different Python installations on MacOS. Also added a feature in historical rates, where you can't select today's date & any date from future.
 * Date Handling: As the API provides historical data up until September 2013, verifying the correctness of fetched historical rates and handling non-business days added an extra layer of complexity.
-* The Frankfurter API provides exchange rates that are sourced from the European Central Bank and they typically updates its rates once every working day, around 16:00 CET. Therefore, if today is Sunday, then the most recent available data would be from Friday, as financial institutions typically don't operate and therefore don't update rates over the weekend.
+* The Frankfurter API provides exchange rates that are sourced from the European Central Bank and they typically updates its rates once every working day, around 16:00 CET. Therefore, if today is Sunday, then the most recent available data would be from Friday, as financial institutions typically don't operate and therefore don't update rates over the weekend. Similarly adjusted the historical rates specially if the user is using it on latest Sunday.
 
 ### Future Implementations:
 * Graphical Representation: In the future, we aim to integrate graphical representations to show the fluctuation of currency rates over a span of time. This would give users a more visual understanding of the currency trends.
