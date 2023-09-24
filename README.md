@@ -26,7 +26,7 @@ This project is a Streamlit web application designed to fetch real-time and hist
 brew install python
 2.	Clone/Download Project:
 *	If you have git installed, you can clone the repository using:
-git clone [repository-url]
+git clone https://github.com/vishalraj247/VR_currency_converter.git
 *	Alternatively, download the zip file of the project and extract it.
 3.	Navigate to Project Directory:
 *	Open the terminal.
