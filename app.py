@@ -18,10 +18,16 @@ else:
     if st.button("Get Latest Rate"):
         date, rate = get_latest_rates(from_currency, to_currency, amount)
         if date and rate:
+            # Inform the user if the latest data is not from today
+            if datetime.datetime.strptime(date, '%Y-%m-%d').date() < datetime.date.today():
+                st.info(f"Note: The most recent available data is from {date}. Exchange rates are typically updated on working days only.")
             st.text(format_output(date, from_currency, to_currency, rate, amount))
     
     selected_date = st.date_input("Select a date for historical rates", datetime.date.today())
-    if st.button("Get Historical Rate"):
+    # Check if the selected date is in the future
+    if selected_date > datetime.date.today():
+        st.warning("Can't show future information. Please select a valid date.")
+    elif st.button("Get Historical Rate"):
         rate = get_historical_rate(from_currency, to_currency, selected_date.strftime('%Y-%m-%d'), amount)
         if rate:
             st.text(format_output(selected_date.strftime('%Y-%m-%d'), from_currency, to_currency, rate, amount))
