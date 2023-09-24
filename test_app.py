@@ -28,8 +28,8 @@ class TestAppFunctions(unittest.TestCase):
     def test_format_output(self):
         """Test the proper formatting of currency conversion output."""
         self.assertEqual(
-            format_output("2023-09-24", "USD", "EUR", 0.89, 100),
-            "The conversion rate on 2023-09-24 from USD to EUR was 0.89. \nSo 100 in USD correspond to 89.0 in EUR. The inverse rate was 1.1236."
+            format_output("2023-09-24", "USD", "EUR", 0.8900, 100.00),
+            "The conversion rate on 2023-09-24 from USD to EUR was 0.8900. \nSo 100.00 in USD correspond to 89.00 in EUR. The inverse rate was 1.1236."
         )
 
     @patch('frankfurter.get_url', return_value=(200, '{"USD":"United States Dollar","EUR":"Euro"}'))
@@ -49,7 +49,7 @@ class TestAppFunctions(unittest.TestCase):
         }
         """
         mock_get.return_value = (200, mock_response)
-        date, rate = get_latest_rates("EUR", "USD", 100)
+        date, rate = get_latest_rates("EUR", "USD")
         self.assertEqual(date, "2023-09-22")
         self.assertEqual(rate, 106.47)
 
@@ -63,7 +63,7 @@ class TestAppFunctions(unittest.TestCase):
         }
         """
         mock_get.return_value = (200, mock_response)
-        rate = get_historical_rate("EUR", "USD", "2023-09-22", 100)
+        rate = get_historical_rate("EUR", "USD", "2023-09-22")
         self.assertEqual(rate, 106.47)
 
 if __name__ == '__main__':
