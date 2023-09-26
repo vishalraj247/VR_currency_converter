@@ -121,6 +121,8 @@ To execute these unit tests:
 1. Navigate to the project directory:
 ```bash
 cd path_to_directory
+```
+```bash
 python3 -m unittest test_app.py
 ```
 
