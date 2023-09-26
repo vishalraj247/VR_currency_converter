@@ -42,36 +42,58 @@ This project is a Streamlit web application designed to fetch real-time and hist
 ## Instructions to Run on MacOS:
 1.	Setup Python Environment:
 *	If you don't have Python installed, you can install it using Homebrew. If you don't have Homebrew, install it first with:
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 *	Then, install Python using(Note: I used Python 3.11.5):
 brew install python
 2.	Clone/Download Project:
 *	If you have git installed, you can clone the repository using:
+```bash
 git clone https://github.com/vishalraj247/VR_currency_converter.git
+```
 *	Alternatively, download the zip file of the project and extract it.
 3.	Navigate to Project Directory:
 *	Open the terminal.
 *	Change directory to where the project files are located using:
+```bash
 cd path_to_directory
+```
 4.	Install and Run Streamlit(Note: I used Streamlit 1.27.0):
 a. Standard Installation:
 *	Install Streamlit using:
+```bash
 python3 -m pip install streamlit
+```
 *	Run the Streamlit app with:
+```bash
 python3 -m streamlit run app.py
+```
 b. Using Virtual Environment (Recommended):
 *	First, install the virtual environment package if you haven't:
+```bash
 python3 -m pip install virtualenv
+```
 *	Create a virtual environment named 'venv' or any name you prefer:
+```bash
 python3 -m virtualenv venv
+```
 *	Activate the virtual environment:
+```bash
 source venv/bin/activate
+```
 *	Within the activated environment, install Streamlit:
+```bash
 pip install streamlit
+```
 *	Run the Streamlit app:
+```bash
 streamlit run app.py
+```
 *	Once done, you can deactivate the virtual environment using:
+```bash
 deactivate
+```
 5.	Access Web App:
 *	A new window should open in your default web browser with the app running. If not, the terminal will display a local URL (typically http://localhost:8501/) which you can enter in your web browser to access the app.
 
